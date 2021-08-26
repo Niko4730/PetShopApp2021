@@ -7,14 +7,29 @@ namespace NGP.PetShopApp2021.Infrastructure.Data.Repositories
 {
     public class PetRepositoryInMemory : IPetRepository
     {
+        private static List<Pet> _petList = new List<Pet>();
+        private static int _id = 1;
         public Pet AddPet(string name, PetType type, string color, DateTime birthdate, DateTime soldDate, double price)
         {
-            throw new NotImplementedException();
+            var pet = new Pet()
+            {
+                Id = _id++,
+                Name = name,
+                Type = type,
+                Color = color,
+                BirthDate = birthdate,
+                SoldDate = soldDate,
+                Price = price
+            };
+            _petList.Add(pet);
+            {
+                return pet;
+            }
         }
 
         public List<Pet> FindAll()
         {
-            throw new NotImplementedException();
+            return _petList;
         }
     }
 }
