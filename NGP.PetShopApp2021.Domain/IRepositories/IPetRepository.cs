@@ -9,5 +9,7 @@ namespace NGP.PetShopApp2021.Domain.IRepositories
         Pet AddPet(string name, PetType type, string color, DateTime birthdate, DateTime soldDate, double price);
 
         List<Pet> FindAll();
+
+        Pet DeletePet(int id);
     }
 }

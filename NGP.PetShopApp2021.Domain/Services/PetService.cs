@@ -20,12 +20,12 @@ namespace NGP.PetShopApp2021.Domain.Services
 
         public Pet CreatePet(string name, PetType type, string color, DateTime birthdate, DateTime soldDate, double price)
         {
-            throw new NotImplementedException();
+            return _repo.AddPet(name, type, color, birthdate, soldDate, price);
         }
 
         public Pet DeletePet(int id)
         {
-            throw new NotImplementedException();
+            return _repo.DeletePet(id);
         }
 
         public Pet UpdatePet(int id)

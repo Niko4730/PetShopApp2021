@@ -15,12 +15,12 @@ namespace NGP.PetShopApp2021.Domain.Services
         }
         public List<PetType> GetAllTypes()
         {
-            throw new System.NotImplementedException();
+           return _repo.FindALlTypes();
         }
 
         public PetType PetTypeById(int id)
         {
-            throw new System.NotImplementedException();
+            return _repo.FindTypeById(id);
         }
     }
 }
