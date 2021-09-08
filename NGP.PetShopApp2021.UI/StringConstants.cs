@@ -18,6 +18,7 @@ namespace NGP.PetShopApp2021.UI
         public const string BackToMainMessage = "Press 0 to return to Main Menu";
         public const string AddMoreMessage = "Press 1 to add another pet";
         public const string DeletePetMessage = "Please type the id of the pet you wish to remove";
+        public const string SearchTypeMessage = "Please enter one of the following types of your pet: Cat, Dog or Guineapig";
         
         
 

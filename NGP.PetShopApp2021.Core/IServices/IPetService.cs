@@ -14,7 +14,7 @@ namespace NGP.PetShopApp2021.Core.IServices
 
         Pet UpdatePet(int id);
 
-        List<Pet> SearchByType(PetType type);
+        List<Pet> SearchByType(string type);
 
         List<Pet> SearchByName(string name);
 

@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>NGP.PetShopApp2021._WebApi</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\NGP.PetShopApp2021.Core\NGP.PetShopApp2021.Core.csproj" />
+      <ProjectReference Include="..\NGP.PetShopApp2021.Domain\NGP.PetShopApp2021.Domain.csproj" />
+      <ProjectReference Include="..\NGP.PetShopApp2021.Infrastructure.Data\NGP.PetShopApp2021.Infrastructure.Data.csproj" />
+    </ItemGroup>
+
+</Project>

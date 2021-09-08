@@ -56,6 +56,7 @@ namespace NGP.PetShopApp2021.UI
                     case 4:
                         break;
                     case 5:
+                        SearchByType();
                         break;
                     default:
                        _.CWL(StringConstants.IntErrorMessage);
@@ -110,6 +111,32 @@ namespace NGP.PetShopApp2021.UI
             _.CWL($"{StringConstants.DeletePetMessage}");
             int intInput = IntTryParse();
             _service.DeletePet(intInput);
+
+        }
+
+        public void SearchByType()
+        {
+            string typeInput;
+            _.CWL(StringConstants.SearchTypeMessage);
+            typeInput = _.CRL();
+            typeInput = $"{typeInput[0].ToString().ToUpper() + typeInput.Substring(1).ToLower()}";
+            switch (typeInput)
+            {
+                case "Cat":
+                case "Dog":
+                case "Guineapig":
+                    var petList = _service.SearchByType(typeInput);
+                    foreach (var pet in petList)
+                    {
+                        _.CWL($"Id: {pet.Id} Name: {pet.Name} Type: {pet.Type.Name} Color: {pet.Color} BirthDate: {pet.BirthDate} SoldDate: {pet.SoldDate} Price: {pet.Price}");
+                    }
+                    _.CRL();
+                    break;
+                default:
+                    _.CWL(StringConstants.IntErrorMessage);
+                    SearchByType();
+                    break;
+            }
 
         }
         public void PetList()

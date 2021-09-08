@@ -33,9 +33,10 @@ namespace NGP.PetShopApp2021.Domain.Services
             throw new NotImplementedException();
         }
 
-        public List<Pet> SearchByType(PetType type)
+        public List<Pet> SearchByType(string type)
         {
-            throw new NotImplementedException();
+            List<Pet> searchTypeList = _repo.FindAll().FindAll(pt => pt.Type.Name == type );
+            return searchTypeList;
         }
 
         public List<Pet> SearchByName(string name)
