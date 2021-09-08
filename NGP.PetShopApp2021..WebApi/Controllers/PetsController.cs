@@ -25,9 +25,15 @@ namespace NGP.PetShopApp2021._WebApi.Controllers
             return _petService.CreatePet(name, type, color, birthdate, soldDate, price);
         }
         [HttpGet]
-        public List<Pet> GetAll()
+        public ActionResult<List<Pet>> GetAll()
         {
             return _petService.GetAllPets();
+        }
+
+        [HttpDelete]
+        public ActionResult<Pet> DeletePet(int id)
+        {
+            return _petService.DeletePet(id);
         }
     }
 }
