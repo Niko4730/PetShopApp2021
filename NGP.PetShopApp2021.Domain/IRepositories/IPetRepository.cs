@@ -11,5 +11,7 @@ namespace NGP.PetShopApp2021.Domain.IRepositories
         List<Pet> FindAll();
 
         Pet DeletePet(int id);
+
+        Pet GetPetById(int id);
     }
 }

@@ -38,5 +38,11 @@ namespace NGP.PetShopApp2021.Infrastructure.Data.Repositories
             _petList.Remove(pet);
             return pet;
         }
+
+        public Pet GetPetById(int id)
+        {
+            var pet = _petList.Find(p => p.Id == id);
+            return pet;
+        }
     }
 }

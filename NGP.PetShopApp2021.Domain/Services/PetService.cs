@@ -48,5 +48,10 @@ namespace NGP.PetShopApp2021.Domain.Services
         {
             throw new NotImplementedException();
         }
+
+        public Pet GetBetById(int id)
+        {
+            return _repo.GetPetById(id);
+        }
     }
 }

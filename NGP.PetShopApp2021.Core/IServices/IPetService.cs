@@ -19,6 +19,8 @@ namespace NGP.PetShopApp2021.Core.IServices
         List<Pet> SearchByName(string name);
 
         List<Pet> SortByPrice(double price);
-        
+
+        Pet GetBetById(int id);
+
     }
 }

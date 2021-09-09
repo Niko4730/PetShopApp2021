@@ -54,6 +54,7 @@ namespace NGP.PetShopApp2021.UI
                         DeletePet();
                         break;
                     case 4:
+                        EditPet();
                         break;
                     case 5:
                         SearchByType();
@@ -65,6 +66,52 @@ namespace NGP.PetShopApp2021.UI
                 }
                 ShowMainMenu();
             }
+        }
+
+        public void EditPet()
+        {
+            _.CWL(StringConstants.EditPetMessage);
+            var petId = IntTryParse();
+            Pet pet = _service.GetBetById(petId);
+            while (pet != null)
+            {
+                _.CWL(StringConstants.IntErrorMessage);
+                petId = IntTryParse();
+                pet = _service.GetBetById(petId);
+            }
+            //Edit pet name
+            _.CWL($"{StringConstants.PetNameMessage}");
+            string strNameInput = _.CRL();
+            //Edit Pet Type
+            _.CWL($"\n{StringConstants.ChooseTypeMessage}");
+            PrintPetTypeList();
+            PetType petType = _typeService.PetTypeById(IntTryParse());
+            //Edit Pet Color
+            _.CWL($"\n{StringConstants.PetColorMessage}");
+            string strColorInput = _.CRL();
+            //Edit Birthdate
+            _.CWL($"\n{StringConstants.BirthdateMessage}");
+            DateTime birthDate = DateTimeTryParse();
+            //Edit SoldDate
+            _.CWL($"\n{StringConstants.SoldTimeMessage}");
+            DateTime soldDate = DateTimeTryParse();
+            //Edit The price of the pet
+            _.CWL($"\n{StringConstants.PriceMessage}");
+            double price = DoubleTryParse();
+
+            pet.Name = strNameInput;
+            pet.Type = petType;
+            pet.Color = strColorInput;
+            pet.BirthDate = birthDate;
+            pet.SoldDate = soldDate;
+            pet.Price = price;
+
+            _.CRL();
+            _service.CreatePet(strNameInput, petType, strColorInput, birthDate, soldDate, price);
+            _.CWL($"You have edited the pet succesfully");
+            _.CWL($"The pets information is now as following Name: {strNameInput} PetType: {petType.Name} Color: {strColorInput} Birthdate: {birthDate} SoldDate: {soldDate} Price: {price}");
+
+
         }
 
         public void AddPet()
@@ -137,7 +184,6 @@ namespace NGP.PetShopApp2021.UI
                     SearchByType();
                     break;
             }
-
         }
         public void PetList()
         {

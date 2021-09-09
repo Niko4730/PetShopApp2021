@@ -20,7 +20,7 @@ namespace NGP.PetShopApp2021._WebApi.Controllers
         }
 
         [HttpPost]
-        public Pet CreatePet(string name, PetType type, string color, DateTime birthdate, DateTime soldDate, double price)
+        public ActionResult<Pet> CreatePet(string name, PetType type, string color, DateTime birthdate, DateTime soldDate, double price)
         {
             return _petService.CreatePet(name, type, color, birthdate, soldDate, price);
         }
