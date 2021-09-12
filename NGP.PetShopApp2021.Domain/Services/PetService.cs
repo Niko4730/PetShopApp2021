@@ -18,9 +18,10 @@ namespace NGP.PetShopApp2021.Domain.Services
             return _repo.FindAll();
         }
 
-        public Pet CreatePet(string name, PetType type, string color, DateTime birthdate, DateTime soldDate, double price)
+        public Pet CreatePet(string name, PetType type, string color, string owner, DateTime birthdate,
+            DateTime soldDate, double price)
         {
-            return _repo.AddPet(name, type, color, birthdate, soldDate, price);
+            return _repo.AddPet(name, type, color, owner, birthdate, soldDate, price);
         }
 
         public Pet DeletePet(int id)

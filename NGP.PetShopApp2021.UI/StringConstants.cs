@@ -20,6 +20,7 @@ namespace NGP.PetShopApp2021.UI
         public const string DeletePetMessage = "Please type the id of the pet you wish to remove";
         public const string SearchTypeMessage = "Please enter one of the following types of your pet: Cat, Dog or Guineapig";
         public const string EditPetMessage = "Please enter the id of the pet, you wish to edit";
+        public const string AddOwnerMessage = "Please type the name of the owner";
         
         
 

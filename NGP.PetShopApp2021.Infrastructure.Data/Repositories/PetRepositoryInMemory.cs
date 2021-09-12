@@ -9,7 +9,8 @@ namespace NGP.PetShopApp2021.Infrastructure.Data.Repositories
     {
         private static List<Pet> _petList = new List<Pet>();
         private static int _id = 1;
-        public Pet AddPet(string name, PetType type, string color, DateTime birthdate, DateTime soldDate, double price)
+        public Pet AddPet(string name, PetType type, string color, string owner, DateTime birthdate, DateTime soldDate,
+            double price)
         {
             var pet = new Pet()
             {
@@ -17,6 +18,7 @@ namespace NGP.PetShopApp2021.Infrastructure.Data.Repositories
                 Name = name,
                 Type = type,
                 Color = color,
+                Owner = owner,
                 BirthDate = birthdate,
                 SoldDate = soldDate,
                 Price = price

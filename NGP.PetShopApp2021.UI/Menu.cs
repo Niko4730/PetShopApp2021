@@ -89,6 +89,9 @@ namespace NGP.PetShopApp2021.UI
             //Edit Pet Color
             _.CWL($"\n{StringConstants.PetColorMessage}");
             string strColorInput = _.CRL();
+            //Enter the owner of the pet
+            _.CWL($"\n{StringConstants.AddOwnerMessage}");
+            string strOwnerInput = _.CRL();
             //Edit Birthdate
             _.CWL($"\n{StringConstants.BirthdateMessage}");
             DateTime birthDate = DateTimeTryParse();
@@ -105,9 +108,10 @@ namespace NGP.PetShopApp2021.UI
             pet.BirthDate = birthDate;
             pet.SoldDate = soldDate;
             pet.Price = price;
+            pet.Owner = strOwnerInput;
 
             _.CRL();
-            _service.CreatePet(strNameInput, petType, strColorInput, birthDate, soldDate, price);
+            _service.CreatePet(strNameInput, petType, strColorInput, strOwnerInput, birthDate, soldDate, price);
             _.CWL($"You have edited the pet succesfully");
             _.CWL($"The pets information is now as following Name: {strNameInput} PetType: {petType.Name} Color: {strColorInput} Birthdate: {birthDate} SoldDate: {soldDate} Price: {price}");
 
@@ -130,6 +134,9 @@ namespace NGP.PetShopApp2021.UI
                 //Message of add pet color and save input
                 _.CWL($"\n{StringConstants.PetColorMessage}");
                 string strColorInput = _.CRL();
+                //Message of addOwner and save input
+                _.CWL($"\n{StringConstants.AddOwnerMessage}");
+                string strOwnerInput = _.CRL();
                 //Message to birthday, tryparse and save input
                 _.CWL($"\n{StringConstants.BirthdateMessage}");
                 DateTime birthDate = DateTimeTryParse();
@@ -140,9 +147,9 @@ namespace NGP.PetShopApp2021.UI
                 _.CWL($"\n{StringConstants.PriceMessage}");
                 double price = DoubleTryParse();
                 //Add all saved inputs to the inMemory list
-                _service.CreatePet(strNameInput, petType, strColorInput, birthDate, soldDate, price);
+                _service.CreatePet(strNameInput, petType, strColorInput, strOwnerInput, birthDate, soldDate, price);
                 _.CWL($"\n{StringConstants.AddPetSucceedMessage}");
-                _.CWL($"The pets information is as following Name: {strNameInput} PetType: {petType.Name} Color: {strColorInput} Birthdate: {birthDate} SoldDate: {soldDate} Price: {price}");
+                _.CWL($"The pets information is as following Name: {strNameInput} PetType: {petType.Name} Color: {strColorInput} Owner:{strOwnerInput} Birthdate: {birthDate} SoldDate: {soldDate} Price: {price}");
                 _.CRL();
                 _.CWL($"{StringConstants.AddMoreMessage} \n{StringConstants.BackToMainMessage}");
                 int intAddMore = IntTryParse();
@@ -190,7 +197,7 @@ namespace NGP.PetShopApp2021.UI
             List<Pet> petList = _service.GetAllPets();
             foreach (var pet in petList)
             {
-                _.CWL($"Id: {pet.Id} Name: {pet.Name} Type: {pet.Type.Name} Color: {pet.Color} BirthDate: {pet.BirthDate} SoldDate: {pet.SoldDate} Price: {pet.Price}");
+                _.CWL($"Id: {pet.Id} Name: {pet.Name} Type: {pet.Type.Name} Color: {pet.Color} Owner: {pet.Owner} BirthDate: {pet.BirthDate} SoldDate: {pet.SoldDate} Price: {pet.Price}");
             }
             _.CRL();
         }

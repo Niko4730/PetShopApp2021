@@ -8,7 +8,8 @@ namespace NGP.PetShopApp2021.Core.IServices
     {
         List<Pet> GetAllPets();
 
-        Pet CreatePet(string name, PetType type, string color, DateTime birthdate, DateTime soldDate, double price);
+        Pet CreatePet(string name, PetType type, string color, string owner, DateTime birthdate, DateTime soldDate,
+            double price);
 
         Pet DeletePet(int id);
 
