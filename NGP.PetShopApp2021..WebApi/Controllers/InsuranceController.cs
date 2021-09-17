@@ -9,7 +9,7 @@ using NGP.PetShopApp2021.Core.Models;
 
 namespace NGP.PetShopApp2021._WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Insurance")]
     [ApiController]
     public class InsuranceController : ControllerBase
     {
@@ -20,12 +20,38 @@ namespace NGP.PetShopApp2021._WebApi.Controllers
             _insuranceService = insuranceService;
         }
 
+        [HttpPost]
+        public ActionResult<Insurance> Create([FromBody] Insurance insurance)
+        {
+            try
+            {
+                return Ok(_insuranceService.CreateInsurance(insurance));
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Call 911");
+            }
+        }
+
         [HttpGet("{id}")]
         public ActionResult<Insurance> ReadById(int id)
         {
             try
             {
                 return Ok(_insuranceService.InsuranceById(id));
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Call 911");
+            }
+        }
+
+        [HttpGet]
+        public ActionResult<List<Insurance>> ReadAll()
+        {
+            try
+            {
+                return Ok(_insuranceService.GetAllInsurances());
             }
             catch (Exception e)
             {

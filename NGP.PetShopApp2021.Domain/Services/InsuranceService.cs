@@ -1,4 +1,5 @@
-﻿using NGP.PetShopApp2021.Core.IServices;
+﻿using System.Collections.Generic;
+using NGP.PetShopApp2021.Core.IServices;
 using NGP.PetShopApp2021.Core.Models;
 using NGP.PetShopApp2021.Domain.IRepositories;
 
@@ -16,6 +17,16 @@ namespace NGP.PetShopApp2021.Domain.Services
         public Insurance InsuranceById(int id)
         {
             return _insuranceRepository.GetById(id);
+        }
+
+        public Insurance CreateInsurance(Insurance insurance)
+        {
+            return _insuranceRepository.CreateInsurance(insurance);
+        }
+
+        public List<Insurance> GetAllInsurances()
+        {
+            return _insuranceRepository.FindAll();
         }
     }
 }

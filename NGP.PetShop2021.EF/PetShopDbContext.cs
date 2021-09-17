@@ -15,6 +15,8 @@ namespace NGP.PetShop2021.EF
                 .HasData(new InsuranceEntity {Id = 2, Name = "Premium", Price = 80});
             modelBuilder.Entity<InsuranceEntity>()
                 .HasData(new InsuranceEntity {Id = 3, Name = "Pro", Price = 100});
+            modelBuilder.Entity<InsuranceEntity>()
+                .HasData(new InsuranceEntity {Id = 4, Name = "ProPlus", Price = 120});
         }
 
         public DbSet<InsuranceEntity> Insurances { get; set; }    
