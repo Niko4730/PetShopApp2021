@@ -28,6 +28,49 @@ namespace NGP.PetShop2021.EF.Repositories
                 .FirstOrDefault(insurance => insurance.Id == id);
         }
 
+        public Insurance DeleteInsurance(int id)
+        {
+            //Shows name, id and price on deleted element
+            InsuranceEntity toRemove = _ctx.Insurances.Single(i => i.Id == id);
+            _ctx.Remove(toRemove);
+            _ctx.SaveChanges();
+            Insurance returnValue = new Insurance
+            {
+                Id = toRemove.Id,
+                Name = toRemove.Name,
+                Price = toRemove.Price
+            };
+            return returnValue;
+            //Shows only id of deleted element
+            /*var entity = _ctx.Remove(new InsuranceEntity {Id = id}).Entity;
+            
+            _ctx.SaveChanges();
+            return new Insurance
+            {
+                Id = entity.Id,
+                Name = entity.Name,
+                Price = entity.Price
+            };*/
+        }
+
+        public Insurance EditInsurance(Insurance insurance)
+        {
+            var insuranceEntity = new InsuranceEntity
+            {
+                Id = insurance.Id,
+                Name = insurance.Name,
+                Price = insurance.Price
+            };
+            var entity = _ctx.Update(insuranceEntity).Entity;
+            _ctx.SaveChanges();
+            return new Insurance
+            {
+                Id = entity.Id,
+                Name = entity.Name,
+                Price = entity.Price
+            };
+        }
+
         public Insurance CreateInsurance(Insurance insurance)
         {
             var entity = _ctx.Add(new InsuranceEntity

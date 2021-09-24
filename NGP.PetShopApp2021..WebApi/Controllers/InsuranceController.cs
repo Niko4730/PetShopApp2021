@@ -58,5 +58,37 @@ namespace NGP.PetShopApp2021._WebApi.Controllers
                 return StatusCode(500, "Call 911");
             }
         }
+
+        [HttpDelete("{id}")]
+        public ActionResult<Insurance> DeleteInsurance(int id)
+        {
+            try
+            {
+                return Ok(_insuranceService.DeleteInsurance(id));
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Call 911");
+            }
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult<Insurance> UpdateInsurance(int id, [FromBody] Insurance insurance)
+        {
+            try
+            {
+                if (id != insurance.Id)
+                {
+                    return BadRequest("Id is wrong");
+                }
+                insurance.Id = id;
+                
+                return Ok(_insuranceService.EditInsurance(insurance));
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Call 911");
+            }
+        }
     }
 }

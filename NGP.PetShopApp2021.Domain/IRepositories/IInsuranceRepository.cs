@@ -10,5 +10,7 @@ namespace NGP.PetShopApp2021.Domain.IRepositories
         Insurance CreateInsurance(Insurance insurance);
 
         List<Insurance> FindAll();
+        Insurance DeleteInsurance(int id);
+        Insurance EditInsurance(Insurance insurance);
     }
 }

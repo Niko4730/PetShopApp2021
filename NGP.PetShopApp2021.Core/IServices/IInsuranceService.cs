@@ -11,5 +11,8 @@ namespace NGP.PetShopApp2021.Core.IServices
 
         List<Insurance> GetAllInsurances();
 
+        Insurance DeleteInsurance(int id);
+        
+        Insurance EditInsurance(Insurance insurance);
     }
 }

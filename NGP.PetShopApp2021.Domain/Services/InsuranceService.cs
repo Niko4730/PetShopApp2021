@@ -28,5 +28,16 @@ namespace NGP.PetShopApp2021.Domain.Services
         {
             return _insuranceRepository.FindAll();
         }
+
+        public Insurance DeleteInsurance(int id)
+        {
+
+            return _insuranceRepository.DeleteInsurance(id);
+        }
+        
+        public Insurance EditInsurance(Insurance insurance)
+        {
+            return _insuranceRepository.EditInsurance(insurance);
+        }
     }
 }

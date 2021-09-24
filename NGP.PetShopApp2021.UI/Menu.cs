@@ -111,7 +111,6 @@ namespace NGP.PetShopApp2021.UI
             pet.Owner = strOwnerInput;
 
             _.CRL();
-            _service.CreatePet(strNameInput, petType, strColorInput, strOwnerInput, birthDate, soldDate, price);
             _.CWL($"You have edited the pet succesfully");
             _.CWL($"The pets information is now as following Name: {strNameInput} PetType: {petType.Name} Color: {strColorInput} Birthdate: {birthDate} SoldDate: {soldDate} Price: {price}");
 
@@ -147,7 +146,17 @@ namespace NGP.PetShopApp2021.UI
                 _.CWL($"\n{StringConstants.PriceMessage}");
                 double price = DoubleTryParse();
                 //Add all saved inputs to the inMemory list
-                _service.CreatePet(strNameInput, petType, strColorInput, strOwnerInput, birthDate, soldDate, price);
+                var pet = new Pet
+                {
+                    Name = strNameInput,
+                    Type = petType,
+                    Color = strColorInput,
+                    Owner = strOwnerInput,
+                    BirthDate = birthDate,
+                    SoldDate = soldDate,
+                    Price = price
+                };
+                _service.CreatePet(pet);
                 _.CWL($"\n{StringConstants.AddPetSucceedMessage}");
                 _.CWL($"The pets information is as following Name: {strNameInput} PetType: {petType.Name} Color: {strColorInput} Owner:{strOwnerInput} Birthdate: {birthDate} SoldDate: {soldDate} Price: {price}");
                 _.CRL();

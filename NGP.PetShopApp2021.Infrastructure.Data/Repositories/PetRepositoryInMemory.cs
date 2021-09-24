@@ -9,24 +9,11 @@ namespace NGP.PetShopApp2021.Infrastructure.Data.Repositories
     {
         private static List<Pet> _petList = new List<Pet>();
         private static int _id = 1;
-        public Pet AddPet(string name, PetType type, string color, string owner, DateTime birthdate, DateTime soldDate,
-            double price)
+        public Pet AddPet(Pet pet)
         {
-            var pet = new Pet()
-            {
-                Id = _id++,
-                Name = name,
-                Type = type,
-                Color = color,
-                Owner = owner,
-                BirthDate = birthdate,
-                SoldDate = soldDate,
-                Price = price
-            };
+            pet.Id = _id++;
             _petList.Add(pet);
-            {
-                return pet;
-            }
+            return pet;
         }
 
         public List<Pet> FindAll()
@@ -45,6 +32,11 @@ namespace NGP.PetShopApp2021.Infrastructure.Data.Repositories
         {
             var pet = _petList.Find(p => p.Id == id);
             return pet;
+        }
+
+        public Pet UpdatePet(Pet pet)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -5,10 +5,16 @@ namespace NGP.PetShop2021.EF
 {
     public class PetShopDbContext : DbContext
     {
-        public PetShopDbContext(DbContextOptions<PetShopDbContext> options) : base(options){}
-        
+        public PetShopDbContext(DbContextOptions<PetShopDbContext> options) : base(options)
+        {
+            
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<PetEntity>().HasOne(petEntity => petEntity.Insurance)
+                .WithMany(ie => ie.PetEntityList)
+                .HasForeignKey(pet => new {pet.insuranceId});
             modelBuilder.Entity<InsuranceEntity>()
                 .HasData(new InsuranceEntity {Id = 1, Name = "Basic", Price = 60});
             modelBuilder.Entity<InsuranceEntity>()
@@ -19,6 +25,9 @@ namespace NGP.PetShop2021.EF
                 .HasData(new InsuranceEntity {Id = 4, Name = "ProPlus", Price = 120});
         }
 
-        public DbSet<InsuranceEntity> Insurances { get; set; }    
+        public DbSet<InsuranceEntity> Insurances { get; set; }  
+        
+        public DbSet<PetEntity> Pet { get; set; }
+        
     }
 }

@@ -20,9 +20,9 @@ namespace NGP.PetShopApp2021._WebApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Pet> CreatePet(string name, PetType type, string color,string owner, DateTime birthdate, DateTime soldDate, double price)
+        public ActionResult<Pet> CreatePet(Pet pet)
         {
-            return _petService.CreatePet(name, type, color, owner, birthdate, soldDate, price);
+            return _petService.CreatePet(pet);
         }
         [HttpGet]
         public ActionResult<List<Pet>> GetAll()

@@ -6,13 +6,14 @@ namespace NGP.PetShopApp2021.Domain.IRepositories
 {
     public interface IPetRepository
     {
-        Pet AddPet(string name, PetType type, string color, string owner, DateTime birthdate, DateTime soldDate,
-            double price);
+        Pet AddPet(Pet pet);
 
         List<Pet> FindAll();
 
         Pet DeletePet(int id);
 
         Pet GetPetById(int id);
+
+        Pet UpdatePet(Pet pet);
     }
 }
