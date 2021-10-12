@@ -203,7 +203,7 @@ namespace NGP.PetShopApp2021.UI
         }
         public void PetList()
         {
-            List<Pet> petList = _service.GetAllPets();
+            List<Pet> petList = _service.GetAllPets(null);
             foreach (var pet in petList)
             {
                 _.CWL($"Id: {pet.Id} Name: {pet.Name} Type: {pet.Type.Name} Color: {pet.Color} Owner: {pet.Owner} BirthDate: {pet.BirthDate} SoldDate: {pet.SoldDate} Price: {pet.Price}");

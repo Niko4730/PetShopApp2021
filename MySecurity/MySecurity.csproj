@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Authorization" />
+      <Folder Include="Exception" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\NGP.PetShopApp2021.Core\NGP.PetShopApp2021.Core.csproj" />
+      <ProjectReference Include="..\NGP.PetShopApp2021.Domain\NGP.PetShopApp2021.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.13.1" />
+    </ItemGroup>
+
+</Project>

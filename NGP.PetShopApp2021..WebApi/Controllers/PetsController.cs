@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NGP.PetShopApp2021.Core.Filtrering;
 using NGP.PetShopApp2021.Core.IServices;
 using NGP.PetShopApp2021.Core.Models;
 
@@ -25,9 +26,9 @@ namespace NGP.PetShopApp2021._WebApi.Controllers
             return _petService.CreatePet(pet);
         }
         [HttpGet]
-        public ActionResult<List<Pet>> GetAll()
+        public ActionResult<List<Pet>> GetAll([FromQuery] Filter filter)
         {
-            return _petService.GetAllPets();
+            return _petService.GetAllPets(filter);
         }
 
         [HttpDelete]

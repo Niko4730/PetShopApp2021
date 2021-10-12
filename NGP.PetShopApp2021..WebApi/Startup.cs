@@ -52,7 +52,7 @@ namespace NGP.PetShopApp2021._WebApi
                 });
             services.AddScoped<IInsuranceRepository, InsuranceRepository>();
             services.AddScoped<IInsuranceService, InsuranceService>();
-            services.AddScoped<IPetRepository, PetRepositoryInMemory>();
+            services.AddScoped<IPetRepository, PetRepository>();
             services.AddScoped<IPetService, PetService>();
             
         }

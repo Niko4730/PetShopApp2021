@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using NGP.PetShop2021.EF.Entities;
+using NGP.PetShopApp2021.Core.Filtrering;
 using NGP.PetShopApp2021.Core.Models;
 using NGP.PetShopApp2021.Domain.IRepositories;
 
@@ -39,9 +40,13 @@ namespace NGP.PetShop2021.EF.Repositories
             };
         }
 
-        public List<Pet> FindAll()
+        
+        public List<Pet> FindAll(Filter filter)
         {
             return _ctx.Pet
+                .Skip((filter.Page -1)* filter.Limit) 
+                .Take(filter.Limit)
+                
                 .Include(pet => pet.Insurance)
                 .Select(pet => new Pet
                 {
@@ -90,6 +95,11 @@ namespace NGP.PetShop2021.EF.Repositories
         public Pet UpdatePet(Pet pet)
         {
             throw new NotImplementedException();
+        }
+
+        public int TotalCount()
+        {
+            return _ctx.Pet.Count();
         }
     }
 }
